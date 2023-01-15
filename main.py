@@ -25,10 +25,19 @@ for _ in range(word_length):
 guessed_letters = []
 
 while not end_of_game:
-    guess = input("Guess a letter: ").lower()
+    while True:
+        guess = input('Guess a letter: ').lower()
+        if guess.isalpha():
+            break
+        else:
+            print('Input should be a letter. Try again.')
+
+    #Store the letter in guessed_letters list.
+    guessed_letters.append(guess)
     
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-    guessed_letters.append(guess)
+    
+    
     
     #Check guessed letter
     for position in range(word_length):
