@@ -14,7 +14,8 @@ lives = 6
 print(hangman_art.logo)
 print("\n")
 #Testing code
-print(f'Pssst, the solution is {chosen_word}.')
+# print(f'Pssst, the solution is {chosen_word}.')
+print(f'You have {lives} lives. Good Luck!')
 
 #Create blanks
 display = []
@@ -36,7 +37,9 @@ while not end_of_game:
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess in guessed_letters:
-        print(f'\nYou have already guessed {guess.upper()} \n')
+        print(f'\nYou have already guessed {guess.upper()}. Try again.\n')
+        print(f"{' '.join(display)}\n")
+        print('===============================================')
         continue
 
     #Store the letter in guessed_letters list.
@@ -54,20 +57,22 @@ while not end_of_game:
     #Check if user is wrong.
     if guess not in chosen_word:
         #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
-        print(f'{guess.upper()} is not in the word.')
         lives -= 1
+        print(
+            f'\n{guess.upper()} is not in the word.\nYou have {lives} lives remaining.'
+        )
         if lives == 0:
             end_of_game = True
             print("You lose.")
+            print(f'\nThe solution was {chosen_word.upper()}.')
 
     #Join all the elements in the list and turn it into a String.
-    print(f"{' '.join(display)}")
+    print(f"\n{' '.join(display)}")
 
     #Check if user has got all letters.
     if "_" not in display:
         end_of_game = True
         print("You win.")
 
-    #TODO-2: - Import the stages from hangman_art.py and make this error go away.
     print(hangman_art.stages[lives])
     print('===============================================')
