@@ -1,23 +1,15 @@
-#Step 5
-
 import random, hangman_art, hangman_words
 
-#TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
-#Delete this line: word_list = ["ardvark", "baboon", "camel"]
 chosen_word = random.choice(hangman_words.word_list)
 word_length = len(chosen_word)
 
 end_of_game = False
 lives = 6
 
-#TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
 print(hangman_art.logo)
 print("\n")
-#Testing code
-# print(f'Pssst, the solution is {chosen_word}.')
 print(f'You have {lives} lives. Good Luck!')
 
-#Create blanks
 display = []
 for _ in range(word_length):
     display += "_"
@@ -35,7 +27,7 @@ while not end_of_game:
         else:
             print('\n' + 'Input should be a letter. Try again.')
 
-    #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
+    #If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess in guessed_letters:
         print(f'\nYou have already guessed {guess.upper()}. Try again.\n')
         print(f"{' '.join(display)}\n")
@@ -56,7 +48,7 @@ while not end_of_game:
 
     #Check if user is wrong.
     if guess not in chosen_word:
-        #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
+        #If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
         lives -= 1
         print(
             f'\n{guess.upper()} is not in the word.\nYou have {lives} lives remaining.'
